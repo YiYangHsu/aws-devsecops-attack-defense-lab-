@@ -123,3 +123,72 @@ Unauthorized Cloud Activity
 The main security question for this project is:
 
 > If an attacker compromises the application container, what can they do next, how can AWS detect the activity, and how should we respond?
+
+## Attack Scenario 01 — Vulnerable Container and S3 Data Access
+
+### Scenario
+
+An external attacker exploits vulnerable software in the
+internet-facing application and gains access to the running container.
+
+The compromised workload has an ECS task IAM role that allows the
+application to read objects from an S3 bucket.
+
+### Assets
+
+- ECS workload
+- Container image
+- ECS task IAM role
+- S3 bucket
+- Data stored in S3
+
+### Vulnerability
+
+The container image contains outdated software with a known
+security vulnerability.
+
+### Threat
+
+An attacker may exploit the vulnerable application, compromise the
+container, and abuse the workload's AWS permissions.
+
+### Attack Path
+
+Internet
+→ Public application
+→ Vulnerable software
+→ Container compromise
+→ ECS task IAM role
+→ AWS API
+→ S3 bucket
+→ S3 data
+
+### Potential Impact
+
+An attacker could use the permissions available to the compromised
+workload to access application data stored in S3.
+
+### Preventive Controls
+
+- Patch vulnerable application dependencies.
+- Use updated container base images.
+- Scan container images for vulnerabilities.
+- Apply least-privilege IAM permissions.
+
+### Detective Controls
+
+- Use CloudTrail to provide visibility into AWS API activity.
+- Use GuardDuty to identify suspicious activity.
+
+### Incident Response
+
+If compromise is confirmed:
+
+1. Contain the affected ECS workload.
+2. Stop the compromised task.
+3. Investigate the activity and determine the root cause.
+4. Review and restrict IAM permissions.
+5. Fix the vulnerable application or container image.
+6. Build a new clean image.
+7. Redeploy the workload.
+8. Verify that the vulnerability has been remediated.
