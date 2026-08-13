@@ -51,3 +51,39 @@ This demonstrates why least-privilege IAM is an important cloud security control
 * What can GuardDuty detect?
 * How can an analyst investigate suspicious activity?
 * How can CI/CD prevent insecure workloads from being deployed?
+
+## 2. Update `weekly-progress.md`
+
+Add:
+
+```markdown
+## Week 2 — Terraform Bootstrap and Remote State
+
+### Objective
+
+Create a secure Terraform foundation that supports persistent remote state
+and disposable AWS lab environments.
+
+### What I Built
+
+- Terraform bootstrap configuration
+- Persistent S3 state bucket
+- S3 versioning
+- S3 Block Public Access
+- Server-side encryption
+- S3 remote backend
+- Terraform state locking
+
+### Architecture
+
+```text
+Bootstrap Terraform
+       |
+       v
+Persistent S3 Backend
+       |
+       v
+Lab Terraform
+       |
+       v
+Disposable AWS Infrastructure
