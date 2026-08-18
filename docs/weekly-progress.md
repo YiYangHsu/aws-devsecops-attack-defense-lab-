@@ -87,3 +87,57 @@ Lab Terraform
        |
        v
 Disposable AWS Infrastructure
+
+
+
+---
+
+# 3. Update `weekly-progress.md`
+
+Add this Week 3 section:
+
+```markdown
+## Week 3 — Docker Fundamentals and Container Hardening
+
+### Objective
+
+Understand Docker images, containers, ports, processes, and container
+users while building a security baseline for the application.
+
+### What I Built
+
+- Python HTTP application
+- Dockerfile
+- Docker image Version 1
+- Hardened Docker image Version 2
+- Local container with port 8080 exposed
+
+### Docker Workflow
+
+```text
+Source Code
+    |
+    v
+Dockerfile
+    |
+    v
+docker build
+    |
+    v
+Docker Image
+    |
+    v
+docker run
+    |
+    v
+Running Container
+
+
+---
+
+# 4. Check what Git will commit
+
+From your repository root:
+
+```bash
+git status
