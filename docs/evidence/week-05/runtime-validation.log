@@ -1,0 +1,10 @@
+2026-09-11T03:38:21.383000+00:00 app/devsecops-lab-app/2d817e6a58654df5995088bb15a0b9ac 204.76.203.49 - - [11/Sep/2026 03:38:21] code 501, message Unsupported method ('CONNECT')
+2026-09-11T03:38:21.383000+00:00 app/devsecops-lab-app/2d817e6a58654df5995088bb15a0b9ac 204.76.203.49 - - [11/Sep/2026 03:38:21] "CONNECT api.i.pn:443 HTTP/1.1" 501 -
+2026-09-11T03:38:26.469000+00:00 app/devsecops-lab-app/2d817e6a58654df5995088bb15a0b9ac 204.76.203.49 - - [11/Sep/2026 03:38:26] code 400, message Bad request syntax ('\\x05\\x01\\x00')
+2026-09-11T03:38:26.469000+00:00 app/devsecops-lab-app/2d817e6a58654df5995088bb15a0b9ac 204.76.203.49 - - [11/Sep/2026 03:38:26] "\x05\x01\x00" 400 -
+2026-09-11T03:55:26.686000+00:00 app/devsecops-lab-app/f0011f3ee15a44d0a76f63dbd93f3a1d 99.247.75.184 - - [11/Sep/2026 03:55:26] "GET / HTTP/1.1" 200 -
+2026-09-11T03:55:26.904000+00:00 app/devsecops-lab-app/f0011f3ee15a44d0a76f63dbd93f3a1d 99.247.75.184 - - [11/Sep/2026 03:55:26] "GET /favicon.ico HTTP/1.1" 200 -
+2026-09-11T03:55:39.478000+00:00 app/devsecops-lab-app/f0011f3ee15a44d0a76f63dbd93f3a1d 99.247.75.184 - - [11/Sep/2026 03:55:39] "GET / HTTP/1.1" 200 -
+2026-09-11T03:55:43.165000+00:00 app/devsecops-lab-app/f0011f3ee15a44d0a76f63dbd93f3a1d 99.247.75.184 - - [11/Sep/2026 03:55:43] "GET /health HTTP/1.1" 200 -
+2026-09-11T04:01:20.020000+00:00 app/devsecops-lab-app/f0011f3ee15a44d0a76f63dbd93f3a1d 99.247.75.184 - - [11/Sep/2026 04:01:20] "GET / HTTP/1.1" 200 -
+2026-09-11T04:01:23.787000+00:00 app/devsecops-lab-app/f0011f3ee15a44d0a76f63dbd93f3a1d 99.247.75.184 - - [11/Sep/2026 04:01:23] "GET /health HTTP/1.1" 200 -

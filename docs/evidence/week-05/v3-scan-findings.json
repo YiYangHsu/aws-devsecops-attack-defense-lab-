@@ -1,0 +1,390 @@
+{
+    "imageScanFindings": {
+        "findings": [
+            {
+                "name": "CVE-2026-11824",
+                "description": "SQLite before 3.53.2 contains a heap-based buffer overflow vulnerability in the FTS5 full-text search extension that allows attackers to cause a crash or execute arbitrary code by supplying a crafted database with malicious continuation page metadata specifying a szLeaf value smaller than 4. Attackers can trigger an integer underflow in fts5ChunkIterate() causing an inflated remaining byte count during FTS5 MATCH query processing, leading to a heap buffer overflow of attacker-controlled data in applications compiled with SQLITE_ENABLE_FTS5.",
+                "uri": "https://nvd.nist.gov/vuln/detail/CVE-2026-11824",
+                "severity": "HIGH",
+                "attributes": [
+                    {
+                        "key": "CVSS4_SCORE",
+                        "value": "8.5"
+                    },
+                    {
+                        "key": "CVSS4_VECTOR",
+                        "value": "CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+                    },
+                    {
+                        "key": "package_version",
+                        "value": "3.46.1-7+deb13u1"
+                    },
+                    {
+                        "key": "package_name",
+                        "value": "sqlite3"
+                    }
+                ]
+            },
+            {
+                "name": "CVE-2026-57432",
+                "description": "Perl versions before 5.40.5-RC1, from 5.41.0 before 5.42.3-RC1, from 5.43.0 before 5.43.11 have an integer overflow in S_measure_struct leading to an out-of-bounds heap read in pack and unpack. S_measure_struct adds each item's size times its repeat count to a running total with no overflow check, so a large repeat count in a pack or unpack template wraps the signed SSize_t total negative. The @, X, and x position codes then guard their moves with a signed length comparison that passes when the length is negative, advancing the buffer pointer out of bounds. A template derived from untrusted input can read heap memory past the buffer and return it to the caller.",
+                "uri": "https://nvd.nist.gov/vuln/detail/CVE-2026-57432",
+                "severity": "HIGH",
+                "attributes": [
+                    {
+                        "key": "CVSS3_SCORE",
+                        "value": "8.4"
+                    },
+                    {
+                        "key": "CVSS3_VECTOR",
+                        "value": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+                    },
+                    {
+                        "key": "package_version",
+                        "value": "5.40.1-6"
+                    },
+                    {
+                        "key": "package_name",
+                        "value": "perl"
+                    }
+                ]
+            },
+            {
+                "name": "CVE-2026-42497",
+                "description": "Archive::Tar versions before 3.08 for Perl extract hardlinks to attacker controlled paths outside the extraction directory. _make_special_file() passes the tar header's linkname to link() without validating it against absolute paths or .. segments, creating a hardlink that shares the victim file's inode. A subsequent write through the extracted name modifies the victim file, and the post-extraction chmod, chown, and utime block in _extract_file() (guarded only against symlinks via -l) applies the tar header's mode, owner, and timestamps to the shared inode during extraction alone.",
+                "uri": "https://nvd.nist.gov/vuln/detail/CVE-2026-42497",
+                "severity": "HIGH",
+                "attributes": [
+                    {
+                        "key": "CVSS3_SCORE",
+                        "value": "7.5"
+                    },
+                    {
+                        "key": "CVSS3_VECTOR",
+                        "value": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+                    },
+                    {
+                        "key": "package_version",
+                        "value": "5.40.1-6"
+                    },
+                    {
+                        "key": "package_name",
+                        "value": "perl"
+                    }
+                ]
+            },
+            {
+                "name": "CVE-2026-86145",
+                "description": "PCRE2 before 10.48 allows a pcre2_dfa_match out-of-bounds write because reuse of a cached workspace block, in a recursive DFA matching workspace, lacks a size check (even though a newly allocated block, for the same purpose, does have a size check). This outcome requires an attacker-controlled regular expression, or a recursive pattern in conjunction with a small heap limit (this can be set through the API).",
+                "uri": "https://nvd.nist.gov/vuln/detail/CVE-2026-86145",
+                "severity": "HIGH",
+                "attributes": [
+                    {
+                        "key": "CVSS3_SCORE",
+                        "value": "8.2"
+                    },
+                    {
+                        "key": "CVSS3_VECTOR",
+                        "value": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:L"
+                    },
+                    {
+                        "key": "package_version",
+                        "value": "10.46-1~deb13u1"
+                    },
+                    {
+                        "key": "package_name",
+                        "value": "pcre2"
+                    }
+                ]
+            },
+            {
+                "name": "CVE-2026-85091",
+                "description": "zlib versions 1.3.1.2 through 1.3.2 contain a heap buffer overflow vulnerability in the gz_vacate() function when processing non-blocking gzwrite() operations with stale external buffer pointers. Attackers can trigger the overflow by calling gzprintf() or gzvprintf() after a write stall, causing an unchecked memmove() to write beyond the internal input buffer boundary.",
+                "uri": "https://nvd.nist.gov/vuln/detail/CVE-2026-85091",
+                "severity": "HIGH",
+                "attributes": [
+                    {
+                        "key": "CVSS4_SCORE",
+                        "value": "8.3"
+                    },
+                    {
+                        "key": "CVSS4_VECTOR",
+                        "value": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:N/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+                    },
+                    {
+                        "key": "package_version",
+                        "value": "1.3.dfsg+really1.3.1-1"
+                    },
+                    {
+                        "key": "package_name",
+                        "value": "zlib"
+                    }
+                ]
+            },
+            {
+                "name": "CVE-2026-48962",
+                "description": "IO::Compress versions before 2.220 for Perl can execute arbitrary code in File::GlobMapper via an attacker-controlled output glob. _parseOutputGlob() wraps the caller-supplied output glob string in double quotes and stores it in the parser state; _getFiles() then runs the stored expression through eval STRING. A literal double quote in the output glob closes the dquote wrapper, and the characters that follow are evaluated as Perl. Arbitrary Perl in the output glob executes at the calling process's privilege.",
+                "uri": "https://nvd.nist.gov/vuln/detail/CVE-2026-48962",
+                "severity": "HIGH",
+                "attributes": [
+                    {
+                        "key": "CVSS3_SCORE",
+                        "value": "7.8"
+                    },
+                    {
+                        "key": "CVSS3_VECTOR",
+                        "value": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+                    },
+                    {
+                        "key": "package_version",
+                        "value": "5.40.1-6"
+                    },
+                    {
+                        "key": "package_name",
+                        "value": "perl"
+                    }
+                ]
+            },
+            {
+                "name": "CVE-2026-5450",
+                "description": "Calling the scanf family of functions with a %mc (malloc'd character match) in the GNU C Library version 2.7 to version 2.43 with a format width specifier with an explicit width greater than 1024 could result in a one byte heap buffer overflow.",
+                "uri": "https://nvd.nist.gov/vuln/detail/CVE-2026-5450",
+                "severity": "CRITICAL",
+                "attributes": [
+                    {
+                        "key": "CVSS3_SCORE",
+                        "value": "9.8"
+                    },
+                    {
+                        "key": "CVSS3_VECTOR",
+                        "value": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+                    },
+                    {
+                        "key": "package_version",
+                        "value": "2.41-12+deb13u3"
+                    },
+                    {
+                        "key": "package_name",
+                        "value": "glibc"
+                    }
+                ]
+            },
+            {
+                "name": "CVE-2026-8376",
+                "description": "Perl versions before 5.40.5-RC1, from 5.41.0 before 5.42.3-RC1, from 5.43.0 before 5.43.11 have a heap buffer overflow when compiling regular expressions with a repeated fixed string on 32-bit builds. Perl_study_chunk in regcomp_study.c checked the size of the joined substring buffer in characters rather than bytes. For a quantified fixed substring with a large minimum count, the byte length mincount * l could overflow SSize_t, producing an undersized SvGROW allocation; the subsequent copy writes past the end of the buffer. A caller that compiles an attacker-controlled regular expression on a 32-bit perl build triggers a heap buffer overflow at compile time.",
+                "uri": "https://nvd.nist.gov/vuln/detail/CVE-2026-8376",
+                "severity": "CRITICAL",
+                "attributes": [
+                    {
+                        "key": "CVSS3_SCORE",
+                        "value": "9.8"
+                    },
+                    {
+                        "key": "CVSS3_VECTOR",
+                        "value": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+                    },
+                    {
+                        "key": "package_version",
+                        "value": "5.40.1-6"
+                    },
+                    {
+                        "key": "package_name",
+                        "value": "perl"
+                    }
+                ]
+            },
+            {
+                "name": "CVE-2026-57433",
+                "description": "Storable versions before 3.41 for Perl have a signed integer overflow when deserializing a crafted SX_HOOK record. retrieve_hook_common reads a signed 32-bit item count from an SX_HOOK record and calls av_extend with that count plus one. A count of I32_MAX wraps the addition to a negative value. A crafted blob passed to thaw or retrieve triggers the overflow; av_extend receives the negative count and dies with a panic, terminating the deserialization.",
+                "uri": "https://nvd.nist.gov/vuln/detail/CVE-2026-57433",
+                "severity": "CRITICAL",
+                "attributes": [
+                    {
+                        "key": "CVSS3_SCORE",
+                        "value": "9.8"
+                    },
+                    {
+                        "key": "CVSS3_VECTOR",
+                        "value": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+                    },
+                    {
+                        "key": "package_version",
+                        "value": "5.40.1-6"
+                    },
+                    {
+                        "key": "package_name",
+                        "value": "perl"
+                    }
+                ]
+            },
+            {
+                "name": "CVE-2026-13221",
+                "description": "Perl versions before 5.40.5-RC1, from 5.41.0 before 5.42.3-RC1, from 5.43.0 before 5.43.10 produce silently incorrect regular expression matches when an alternation of more than 65535 fixed string branches is compiled into a trie in Perl_study_chunk. When such branches are combined into a trie, the delta between the first branch and the shared tail is stored in a 16-bit field. A branch count above 65535 overflows the field, and the trie's match decision table is truncated with no warning or error. A pattern of this shape produces false positive matches (matching strings it should not) and false negative matches (failing to match strings it should). When such a pattern gates an access or filtering decision, the result is wrong.",
+                "uri": "https://nvd.nist.gov/vuln/detail/CVE-2026-13221",
+                "severity": "CRITICAL",
+                "attributes": [
+                    {
+                        "key": "CVSS3_SCORE",
+                        "value": "9.1"
+                    },
+                    {
+                        "key": "CVSS3_VECTOR",
+                        "value": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H"
+                    },
+                    {
+                        "key": "package_version",
+                        "value": "5.40.1-6"
+                    },
+                    {
+                        "key": "package_name",
+                        "value": "perl"
+                    }
+                ]
+            },
+            {
+                "name": "CVE-2026-12087",
+                "description": "Socket versions before 2.041 for Perl have an out-of-bounds heap read. In Socket.xs, pack_ip_mreq_source() checks the length of its source argument before the argument is read, so the check tests the byte length carried over from the preceding multiaddr argument instead. Both addresses occupy a 4-byte field, so a valid multiaddr lets a source of any length pass the check, and the source is then copied into the 4-byte imr_sourceaddr field with a fixed-size copy. A source shorter than 4 bytes is not rejected, and the copy reads up to 3 bytes past the end of its buffer. Calling pack_ip_mreq_source() with a source value shorter than 4 bytes copies adjacent heap memory into the returned packed structure.",
+                "uri": "https://nvd.nist.gov/vuln/detail/CVE-2026-12087",
+                "severity": "CRITICAL",
+                "attributes": [
+                    {
+                        "key": "CVSS3_SCORE",
+                        "value": "9.1"
+                    },
+                    {
+                        "key": "CVSS3_VECTOR",
+                        "value": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H"
+                    },
+                    {
+                        "key": "package_version",
+                        "value": "5.40.1-6"
+                    },
+                    {
+                        "key": "package_name",
+                        "value": "perl"
+                    }
+                ]
+            },
+            {
+                "name": "CVE-2026-42496",
+                "description": "Archive::Tar versions before 3.08 for Perl extract symlinks with attacker controlled targets outside the extraction directory. _make_special_file() passes the tar header's linkname to symlink() without validating it against absolute paths or .. segments. The secure-extract mode check that guards regular file extraction does not cover the symlink target. A subsequent open through the extracted name reads or writes the attacker chosen path.",
+                "uri": "https://nvd.nist.gov/vuln/detail/CVE-2026-42496",
+                "severity": "CRITICAL",
+                "attributes": [
+                    {
+                        "key": "CVSS3_SCORE",
+                        "value": "9.1"
+                    },
+                    {
+                        "key": "CVSS3_VECTOR",
+                        "value": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
+                    },
+                    {
+                        "key": "package_version",
+                        "value": "5.40.1-6"
+                    },
+                    {
+                        "key": "package_name",
+                        "value": "perl"
+                    }
+                ]
+            },
+            {
+                "name": "CVE-2025-15649",
+                "description": "IO::Uncompress::Unzip versions before 2.215 for Perl propagate uncaught exception when parsing zip header with malformed DOS date. _dosToUnixTime() decodes the local-file-header last-modification date field and calls Time::Local::timelocal() without an eval guard. A header whose date field decodes to an out-of-range month, day, or hour causes timelocal() to die. The exception propagates out of IO::Uncompress::Unzip->new($file) where callers expect undef plus $UnzipError.",
+                "uri": "https://nvd.nist.gov/vuln/detail/CVE-2025-15649",
+                "severity": "MEDIUM",
+                "attributes": [
+                    {
+                        "key": "CVSS3_SCORE",
+                        "value": "5.5"
+                    },
+                    {
+                        "key": "CVSS3_VECTOR",
+                        "value": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+                    },
+                    {
+                        "key": "package_version",
+                        "value": "5.40.1-6"
+                    },
+                    {
+                        "key": "package_name",
+                        "value": "perl"
+                    }
+                ]
+            },
+            {
+                "name": "CVE-2026-48959",
+                "description": "IO::Uncompress::Unzip versions before 2.220 for Perl allow CPU exhaustion via per-byte read loop in fastForward. fastForward() compares length $offset (the digit count of the offset, 1 to 19) against the chunk size $c instead of $offset itself, so $c shrinks from 16 KiB to 1-19 bytes per iteration. Extracting a named entry from an attacker supplied zip via IO::Uncompress::Unzip->new($zip, Name => $target) drives a per-byte read loop scaling with the entry's compressed size, up to the non-Zip64 4 GiB cap.",
+                "uri": "https://nvd.nist.gov/vuln/detail/CVE-2026-48959",
+                "severity": "HIGH",
+                "attributes": [
+                    {
+                        "key": "CVSS3_SCORE",
+                        "value": "7.5"
+                    },
+                    {
+                        "key": "CVSS3_VECTOR",
+                        "value": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+                    },
+                    {
+                        "key": "package_version",
+                        "value": "5.40.1-6"
+                    },
+                    {
+                        "key": "package_name",
+                        "value": "perl"
+                    }
+                ]
+            },
+            {
+                "name": "CVE-2026-5928",
+                "description": "Calling the ungetwc function on a FILE stream with wide characters encoded in a character set that has overlaps between its single byte and multi-byte character encodings, in the GNU C Library version 2.43 or earlier, may result in an attempt to read bytes before an allocated buffer, potentially resulting in unintentional disclosure of neighboring data in the heap, or a program crash. A bug in the wide character pushback implementation (_IO_wdefault_pbackfail in libio/wgenops.c) causes ungetwc() to operate on the regular character buffer (fp->_IO_read_ptr) instead of the actual wide-stream read pointer (fp->_wide_data->_IO_read_ptr). The program crash may happen in cases where fp->_IO_read_ptr is not initialized and hence points to NULL. The buffer under-read requires a special situation where the input character encoding is such that there are overlaps between single byte representations and multibyte representations in that encoding, resulting in spurious matches. The spurious match case is not possible in the standard Unicode character sets.",
+                "uri": "https://nvd.nist.gov/vuln/detail/CVE-2026-5928",
+                "severity": "HIGH",
+                "attributes": [
+                    {
+                        "key": "CVSS3_SCORE",
+                        "value": "7.5"
+                    },
+                    {
+                        "key": "CVSS3_VECTOR",
+                        "value": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+                    },
+                    {
+                        "key": "package_version",
+                        "value": "2.41-12+deb13u3"
+                    },
+                    {
+                        "key": "package_name",
+                        "value": "glibc"
+                    }
+                ]
+            },
+            {
+                "name": "CVE-2026-7010",
+                "description": "HTTP::Tiny versions before 0.093 for Perl do not validate CRLF in HTTP request lines or control field header values. The unvalidated inputs are the method and URI in the request line, the URL host that becomes the `Host:` header, and HTTP/1.1 control data field values. An attacker who controls one of these inputs, for example a user supplied URL passed to a webhook or URL fetch endpoint, can inject additional headers and smuggle requests to the upstream server.",
+                "uri": "https://nvd.nist.gov/vuln/detail/CVE-2026-7010",
+                "severity": "MEDIUM",
+                "attributes": [
+                    {
+                        "key": "CVSS3_SCORE",
+                        "value": "6.5"
+                    },
+                    {
+                        "key": "CVSS3_VECTOR",
+                        "value": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N"
+                    },
+                    {
+                        "key": "package_version",
+                        "value": "5.40.1-6"
+                    },
+                    {
+                        "key": "package_name",
+                        "value": "perl"
+                    }
+                ]
+            },
+            {
+                "name": "CVE-2026-41991",
+                "description": 

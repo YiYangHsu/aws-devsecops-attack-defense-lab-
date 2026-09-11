@@ -90,7 +90,7 @@ Disposable AWS Infrastructure
 
 
 
----
+```
 
 # 3. Update `weekly-progress.md`
 
@@ -131,13 +131,131 @@ docker run
     |
     v
 Running Container
+```
+## Week 4 — ECR and ECS/Fargate
 
+### Objective
 
----
+Move the hardened Docker application from the local environment into AWS
+and run it using ECS/Fargate.
 
-# 4. Check what Git will commit
+### What I Built
 
-From your repository root:
+- Amazon ECR private repository
+- Immutable container image tags
+- ECR vulnerability scanning
+- VPC and public subnet
+- Internet Gateway and route table
+- Application security group
+- ECS cluster
+- ECS task execution IAM role
+- Fargate task definition
+- ECS service
+- CloudWatch container logging
 
-```bash
-git status
+### Deployment Flow
+
+Docker Image
+→ Amazon ECR
+→ ECS Task Definition
+→ ECS Service
+→ AWS Fargate
+→ CloudWatch Logs
+
+### Troubleshooting
+
+The original `v2` image used an OCI image index containing Docker build
+provenance metadata. Amazon ECR basic scanning could not scan the tagged
+image index.
+
+A new `v3` image was created using a scanner-compatible image manifest,
+after which ECR successfully produced vulnerability findings.
+
+Git Bash also converted the `/ecs/...` CloudWatch log group path into a
+Windows-style path when used with the AWS CLI. Using
+`MSYS_NO_PATHCONV=1` prevented this conversion.
+
+### Security Observation
+
+Shortly after exposing the Fargate workload publicly on TCP/8080,
+CloudWatch recorded unexpected external probing.
+
+The traffic was investigated and no evidence of successful compromise
+was identified.
+
+### Key Lesson
+
+Deploying an application is only part of operating a cloud workload.
+
+A security engineer must also understand:
+
+- How the image was built
+- Which vulnerabilities exist
+- Which network paths are exposed
+- Which IAM permissions exist
+- What telemetry is available
+- How unexpected activity should be investigated
+
+## Week 5 - Container Vulnerability Management
+
+### Completed
+
+Built a complete container vulnerability remediation workflow using
+Amazon ECR.
+
+Started with the Debian-based `v3` image, which contained 21 ECR
+findings:
+
+- 6 Critical
+- 11 High
+- 3 Medium
+- 1 Low
+
+Investigated Critical glibc and Perl findings and verified the installed
+packages from inside the container.
+
+Determined that newer Debian package versions were not available through
+the configured repositories.
+
+Evaluated `python:3.12-alpine` as an alternative base image.
+
+Built `v5`, tested application compatibility and non-root execution, and
+reduced ECR findings from 21 to 5.
+
+Traced the remaining util-linux findings to the installed Alpine
+`libuuid` package.
+
+Found an updated Alpine package version and created `v6` with
+`libuuid 2.42.3-r1`.
+
+Validated the application locally, verified non-root execution, pushed
+the image to ECR, and rescanned it.
+
+ECR Basic Scanning reported no findings for `v6` at scan time.
+
+Updated Terraform from `v3` to `v6`, creating ECS Task Definition
+revision 3.
+
+Successfully deployed the remediated workload and verified `/` and
+`/health` through its public Fargate IP.
+
+Confirmed successful HTTP 200 requests in CloudWatch Logs.
+
+Destroyed all 14 disposable lab resources after evidence collection.
+
+### Key Lessons
+
+Vulnerability management requires triage rather than blindly reacting
+to severity ratings.
+
+Container vulnerabilities can originate from inherited base-image
+packages rather than application code.
+
+A newer image tag does not mean the underlying vulnerable package has
+changed.
+
+Source package names reported by scanners may differ from installed
+binary package names.
+
+A clean vulnerability scan is a point-in-time scanner result, not proof
+that software is permanently vulnerability-free.

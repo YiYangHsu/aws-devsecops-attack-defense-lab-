@@ -19,7 +19,7 @@ resource "aws_ecs_task_definition" "app" {
   container_definitions = jsonencode([
     {
       name      = "devsecops-lab-app"
-      image     = "${aws_ecr_repository.app.repository_url}:v3"
+      image     = "${aws_ecr_repository.app.repository_url}:v6"
       essential = true
 
       portMappings = [

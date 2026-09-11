@@ -1,0 +1,18 @@
+{
+    "imageScanFindings": {
+        "findings": [],
+        "imageScanCompletedAt": "2026-09-10T23:49:31-04:00",
+        "vulnerabilitySourceUpdatedAt": "2026-09-10T23:49:31-04:00",
+        "findingSeverityCounts": {}
+    },
+    "registryId": "472353357025",
+    "repositoryName": "devsecops-lab-app",
+    "imageId": {
+        "imageDigest": "sha256:2cb20ee8021cb6beb6e575f505e09d2299e1ca5a945977331423a217204f9bc9",
+        "imageTag": "v6"
+    },
+    "imageScanStatus": {
+        "status": "COMPLETE",
+        "description": "The scan was completed successfully."
+    }
+}
