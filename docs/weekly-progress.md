@@ -259,3 +259,66 @@ binary package names.
 
 A clean vulnerability scan is a point-in-time scanner result, not proof
 that software is permanently vulnerability-free.
+
+## Week 6 - IAM Attack Surface and Least Privilege
+
+### Completed
+
+Created a disposable S3 IAM lab containing an allowed test object and a
+restricted decoy object.
+
+Verified the ECS workload initially had an Execution Role but no Task
+Role.
+
+Created an ECS Task Role with intentionally broad `s3:*` permissions
+scoped to the disposable lab bucket.
+
+Updated the Python application to use Boto3 and temporary ECS Task Role
+credentials without storing static AWS credentials.
+
+Built and scanned container image `v7`.
+
+Validated that the broad Task Role allowed the application to:
+
+- Read the intended object
+- Read the restricted decoy object
+- List the S3 bucket
+
+Replaced the broad policy with least privilege:
+
+`s3:GetObject`
+
+on only:
+
+`allowed/test-data.txt`
+
+Validated the remediated permissions:
+
+- `/s3/allowed` returned HTTP 200
+- `/s3/restricted` returned HTTP 403
+- `/s3/list` returned HTTP 403
+
+CloudWatch Logs captured the before-and-after authorization behavior.
+
+Saved IAM, ECS, and runtime evidence under:
+
+`docs/evidence/week-06/`
+
+Destroyed all 21 disposable lab resources after testing.
+
+### Key Lessons
+
+ECS Task Roles define the AWS permissions available to application code.
+
+A compromised workload may inherit its Task Role permissions.
+
+Broad IAM permissions increase blast radius even when the application
+only requires a small subset of those permissions.
+
+Least privilege should restrict both actions and resources.
+
+AWS IAM implicitly denies operations that do not have an applicable
+Allow.
+
+Authorization can be tightened independently of application code when
+the workload continues to use the same Task Role.

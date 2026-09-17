@@ -1,0 +1,7 @@
+2026-09-17T03:13:12.634000+00:00 app/devsecops-lab-app/e0fcaabd8fd54357bc211c5cb8ba3eb6 99.247.75.184 - - [17/Sep/2026 03:13:12] "GET /s3/allowed HTTP/1.1" 200 -
+2026-09-17T03:13:15.658000+00:00 app/devsecops-lab-app/e0fcaabd8fd54357bc211c5cb8ba3eb6 147.185.132.103 - - [17/Sep/2026 03:13:15] "GET / HTTP/1.1" 200 -
+2026-09-17T03:13:22.108000+00:00 app/devsecops-lab-app/e0fcaabd8fd54357bc211c5cb8ba3eb6 99.247.75.184 - - [17/Sep/2026 03:13:22] "GET /s3/restricted HTTP/1.1" 200 -
+2026-09-17T03:13:32.218000+00:00 app/devsecops-lab-app/e0fcaabd8fd54357bc211c5cb8ba3eb6 99.247.75.184 - - [17/Sep/2026 03:13:32] "GET /s3/list HTTP/1.1" 200 -
+2026-09-17T03:21:48.106000+00:00 app/devsecops-lab-app/e0fcaabd8fd54357bc211c5cb8ba3eb6 99.247.75.184 - - [17/Sep/2026 03:21:48] "GET /s3/allowed HTTP/1.1" 200 -
+2026-09-17T03:21:57.657000+00:00 app/devsecops-lab-app/e0fcaabd8fd54357bc211c5cb8ba3eb6 99.247.75.184 - - [17/Sep/2026 03:21:57] "GET /s3/restricted HTTP/1.1" 403 -
+2026-09-17T03:22:06.521000+00:00 app/devsecops-lab-app/e0fcaabd8fd54357bc211c5cb8ba3eb6 99.247.75.184 - - [17/Sep/2026 03:22:06] "GET /s3/list HTTP/1.1" 403 -

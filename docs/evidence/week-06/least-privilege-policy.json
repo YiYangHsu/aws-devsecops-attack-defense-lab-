@@ -1,0 +1,15 @@
+{
+    "RoleName": "devsecops-lab-ecs-task-role",
+    "PolicyName": "devsecops-lab-least-privilege-s3-policy",
+    "PolicyDocument": {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Action": "s3:GetObject",
+                "Effect": "Allow",
+                "Resource": "arn:aws:s3:::devsecops-iam-lab-472353357025/allowed/test-data.txt",
+                "Sid": "ReadOnlyAllowedLabObject"
+            }
+        ]
+    }
+}

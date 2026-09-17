@@ -1,6 +1,7 @@
 FROM python:3.12-alpine
 
-RUN apk upgrade --no-cache libuuid
+RUN apk upgrade --no-cache libuuid \
+    && pip install --no-cache-dir boto3
 
 RUN addgroup -S appgroup \
     && adduser -S -G appgroup appuser

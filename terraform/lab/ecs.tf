@@ -15,12 +15,20 @@ resource "aws_ecs_task_definition" "app" {
   memory = "512"
 
   execution_role_arn = aws_iam_role.ecs_task_execution.arn
+  task_role_arn      = aws_iam_role.ecs_task.arn
 
   container_definitions = jsonencode([
     {
       name      = "devsecops-lab-app"
-      image     = "${aws_ecr_repository.app.repository_url}:v6"
+      image     = "${aws_ecr_repository.app.repository_url}:v7"
       essential = true
+
+      environment = [
+        {
+          name  = "IAM_LAB_BUCKET"
+          value = aws_s3_bucket.iam_lab.bucket
+        }
+      ]
 
       portMappings = [
         {
@@ -62,6 +70,8 @@ resource "aws_ecs_service" "app" {
   }
 
   depends_on = [
-    aws_iam_role_policy_attachment.ecs_task_execution
+    aws_iam_role_policy_attachment.ecs_task_execution,
+    aws_iam_role_policy.ecs_task_s3_least_privilege
+    #  aws_iam_role_policy.ecs_task_s3_broad
   ]
 }

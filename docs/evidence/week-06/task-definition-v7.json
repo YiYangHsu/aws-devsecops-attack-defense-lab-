@@ -1,0 +1,84 @@
+{
+    "taskDefinition": {
+        "taskDefinitionArn": "arn:aws:ecs:us-east-1:472353357025:task-definition/devsecops-lab-app:6",
+        "containerDefinitions": [
+            {
+                "name": "devsecops-lab-app",
+                "image": "472353357025.dkr.ecr.us-east-1.amazonaws.com/devsecops-lab-app:v7",
+                "cpu": 0,
+                "portMappings": [
+                    {
+                        "containerPort": 8080,
+                        "hostPort": 8080,
+                        "protocol": "tcp"
+                    }
+                ],
+                "essential": true,
+                "environment": [
+                    {
+                        "name": "IAM_LAB_BUCKET",
+                        "value": "devsecops-iam-lab-472353357025"
+                    }
+                ],
+                "mountPoints": [],
+                "volumesFrom": [],
+                "logConfiguration": {
+                    "logDriver": "awslogs",
+                    "options": {
+                        "awslogs-group": "/ecs/devsecops-lab-app",
+                        "awslogs-region": "us-east-1",
+                        "awslogs-stream-prefix": "app"
+                    }
+                },
+                "systemControls": []
+            }
+        ],
+        "family": "devsecops-lab-app",
+        "taskRoleArn": "arn:aws:iam::472353357025:role/devsecops-lab-ecs-task-role",
+        "executionRoleArn": "arn:aws:iam::472353357025:role/devsecops-lab-ecs-task-execution-role",
+        "networkMode": "awsvpc",
+        "revision": 6,
+        "volumes": [],
+        "status": "ACTIVE",
+        "requiresAttributes": [
+            {
+                "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+            },
+            {
+                "name": "ecs.capability.execution-role-awslogs"
+            },
+            {
+                "name": "com.amazonaws.ecs.capability.ecr-auth"
+            },
+            {
+                "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+            },
+            {
+                "name": "com.amazonaws.ecs.capability.task-iam-role"
+            },
+            {
+                "name": "ecs.capability.execution-role-ecr-pull"
+            },
+            {
+                "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+            },
+            {
+                "name": "ecs.capability.task-eni"
+            }
+        ],
+        "placementConstraints": [],
+        "compatibilities": [
+            "EC2",
+            "FARGATE",
+            "MANAGED_INSTANCES"
+        ],
+        "requiresCompatibilities": [
+            "FARGATE"
+        ],
+        "cpu": "256",
+        "memory": "512",
+        "registeredAt": "2026-09-16T23:06:51.555000-04:00",
+        "registeredBy": "arn:aws:iam::472353357025:user/guardduty-lab"
+    },
+    "tags": []
+}
