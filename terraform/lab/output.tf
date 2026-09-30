@@ -58,3 +58,18 @@ output "ecs_task_role_arn" {
   description = "IAM role used by the application running inside ECS"
   value       = aws_iam_role.ecs_task.arn
 }
+
+output "cloudtrail_name" {
+  description = "CloudTrail used for Week 7 security telemetry"
+  value       = aws_cloudtrail.security.name
+}
+
+output "cloudtrail_log_group_name" {
+  description = "CloudWatch log group receiving CloudTrail events"
+  value       = aws_cloudwatch_log_group.cloudtrail.name
+}
+
+output "cloudtrail_s3_bucket_name" {
+  description = "Disposable S3 bucket storing CloudTrail log files"
+  value       = aws_s3_bucket.cloudtrail_logs.bucket
+}
